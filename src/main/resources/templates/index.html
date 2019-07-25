@@ -6,7 +6,9 @@
 </head>
 <body>
 <h2>Insecure Page</h2>
-<p th:text="'Current User:' + ${crntuser.username}"></p>
+<a href="/logout">Logout</a>
 <a href="/secure">Secure Page</a>
+
+<p th:text="'Current User:' + ${crntuser.username}"></p>
 </body>
 </html>

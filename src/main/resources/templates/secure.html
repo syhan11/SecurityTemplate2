@@ -1,9 +1,15 @@
 <!DOCTYPE html>
 
+<!--
+Make sure pom.xml has dependency as below
+<dependency>
+			<groupId>org.thymeleaf.extras</groupId>
+			<artifactId>thymeleaf-extras-springsecurity5</artifactId>
+		</dependency>
+-->
 <html lang="en"
       xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
-      >
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head>
 <meta charset="UTF-8">
@@ -11,6 +17,7 @@
 </head>
 <body>
 
+<!-- hasAuthority has been set in the SecurityConfiguration file -->
 <div sec:authorize="hasAuthority('ADMIN')">
     Administrators will see this text. You can display a navbar here.
 </div>
@@ -19,9 +26,10 @@
     Users will see this text. You can display a navbar here.
 </div>
 
+
 <h3>Secure Page</h3>
-<p th:text="'Current User:' + ${crntuser.username}"></p><br/>
 <a href="/logout">Logout</a>
+<p th:text="'Current User:' + ${crntuser.username}"></p><br/>
 <h4>email</h4>
 <p th:text="${crntuser.email}"></p><br/>
 <h4>last name</h4>
