@@ -6,10 +6,11 @@
 </head>
 <body>
     <h3>Secure Page</h3>
+    <p th:text="'Current User:' + ${crntuser.username}"></p><br/>
     <a href="/logout">Logout</a>
     <h4>email</h4>
-    <p th:text="${myuser.email}"></p><br/>
+    <p th:text="${crntuser.email}"></p><br/>
     <h4>last name</h4>
-    <p th:text="${myuser.lastName}"></p>
+    <p th:text="${crntuser.lastName}"></p>
 </body>
 </html>
