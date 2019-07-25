@@ -18,15 +18,18 @@ public class HomeController {
     @Autowired
     UserRepository userRepository;
 
+    @Autowired
+    RoleRepository roleRepository;
+
     //@RequestMapping(value="/register", method= RequestMethod.GET)
-    @GetMapping(value="/register")
+    @GetMapping("/register")
     public String showRegistrationPage(Model model){
         model.addAttribute("user", new User());
         return "registration";
     }
 
     //@RequestMapping(value="/register", method = RequestMethod.POST)
-    @PostMapping(value="/register")
+    @PostMapping("/register")
     public String processRegistrationPage(@Valid @ModelAttribute("user") User user,
                                           BindingResult result,
                                           Model model) {
@@ -38,22 +41,41 @@ public class HomeController {
             model.addAttribute("message", "User Account Created.");
         }
 
-
-        //pass currently login user information to index.html
-        model.addAttribute("crntuser", user);
-
-        return "index";
+        return "login";
 
     }
 
-
+    /*
+     * after login has been validated, it will come here
+     */
     @RequestMapping("/")
-    public String index(Principal principal, Model model) {
+    public String index(Model model) {
+        boolean adminflag = false;
 
-        //pass currently login user information to index.html
-        String username=principal.getName();
-        model.addAttribute("crntuser", userRepository.findByUsername(username));
-        return "index";
+        //pass currently logged-in user information to index.html
+        User crntuser = userService.getUser();
+        if (crntuser != null) {
+            model.addAttribute("crntuser", crntuser);
+
+            // check for role of the user to call appropriate page
+            long primid = roleRepository.findByRole("ADMIN").getId();
+            for (Role onerole : crntuser.getRoles()) {
+                if (onerole.getId() == primid) {
+                    adminflag = true;
+                    break;
+                }
+            }
+        }
+        else
+            crntuser = new User();
+
+        model.addAttribute("crntuser", crntuser);
+        if (adminflag)
+            return "admin";
+        else
+            return "index";
+
+
     }
 
     @RequestMapping("/login")
@@ -62,22 +84,23 @@ public class HomeController {
     }
 
     @RequestMapping("/admin")
-    public String admin(Principal principal, Model model) {
+    public String admin(Model model) {
 
-        //pass currently login user information to admin.html
-        String username = principal.getName();
-        model.addAttribute("crntuser", userRepository.findByUsername(username));
+        //pass currently logged-in user information to index.html
+        User crntuser = userService.getUser();
+        if (crntuser != null)
+            model.addAttribute("crntuser", crntuser);
 
         return "admin";
     }
 
     @RequestMapping("/secure")
-    public String secure(Principal principal, Model model) {
+    public String secure(Model model) {
 
-        //pass currently login user information to secure.html
-        String username = principal.getName();
-        model.addAttribute("crntuser", userRepository.findByUsername(username));
-
+        //pass currently logged-in user information to index.html
+        User crntuser = userService.getUser();
+        if (crntuser != null)
+            model.addAttribute("crntuser", crntuser);
         return "secure";
     }
 }

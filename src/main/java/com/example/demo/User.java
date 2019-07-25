@@ -36,6 +36,12 @@ public class User {
     private Collection<Role> roles;
 
     public User() {
+        this.setEmail("");
+        this.setPassword("");
+        this.setFirstName("");
+        this.setLastName("");
+        this.setEnabled(false);
+        this.setUsername("");
     }
 
     public User(String email, String password, String firstName,

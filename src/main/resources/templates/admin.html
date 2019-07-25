@@ -7,5 +7,10 @@
 <body>
 <h2>Admin Page</h2>
 <p th:text="'Current User:' + ${crntuser.username}"></p>
+<a href="/logout">Logout</a>
+<h4>email</h4>
+<p th:text="${crntuser.email}"></p><br/>
+<h4>last name</h4>
+<p th:text="${crntuser.lastName}"></p>
 </body>
 </html>
