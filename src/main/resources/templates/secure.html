@@ -1,16 +1,30 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+      >
+
 <head>
-    <meta charset="UTF-8">
-    <title>SecurePg</title>
+<meta charset="UTF-8">
+<title>SecurePg</title>
 </head>
 <body>
-    <h3>Secure Page</h3>
-    <p th:text="'Current User:' + ${crntuser.username}"></p><br/>
-    <a href="/logout">Logout</a>
-    <h4>email</h4>
-    <p th:text="${crntuser.email}"></p><br/>
-    <h4>last name</h4>
-    <p th:text="${crntuser.lastName}"></p>
+
+<div sec:authorize="hasAuthority('ADMIN')">
+    Administrators will see this text. You can display a navbar here.
+</div>
+
+<div sec:authorize="hasAuthority('USER')">
+    Users will see this text. You can display a navbar here.
+</div>
+
+<h3>Secure Page</h3>
+<p th:text="'Current User:' + ${crntuser.username}"></p><br/>
+<a href="/logout">Logout</a>
+<h4>email</h4>
+<p th:text="${crntuser.email}"></p><br/>
+<h4>last name</h4>
+<p th:text="${crntuser.lastName}"></p>
 </body>
 </html>
