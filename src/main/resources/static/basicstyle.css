@@ -35,6 +35,11 @@ tr:nth-child(even) {
     text-align: center;
 }
 
+
+.maintitle {
+    background-color: azure;
+}
+
 .navbar {
     position: fixed;
     left: 0;
@@ -43,7 +48,7 @@ tr:nth-child(even) {
 }
 
 #nav-item {
-    width: 100px;
+    width: 200px;
 
 }
 
@@ -52,7 +57,9 @@ tr:nth-child(even) {
     right: 0;
 }
 
-.maintitle {
-    background-color: azure;
+#loginform {
+    position: center;
+    width: 400px;
+    height: 400px;
 }
 

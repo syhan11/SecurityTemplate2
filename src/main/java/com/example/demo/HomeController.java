@@ -7,6 +7,8 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
+
 /*
  * This controller will deal with all but security (login & register)
  */
@@ -18,17 +20,15 @@ public class HomeController {
     @Autowired
     RoleRepository roleRepository;
 
+    @Autowired
+    UserRepository userRepository;
+
     /*
      * after login has been validated, it will come here
      */
     @RequestMapping("/")
-    public String index(Model model) {
-
-        //pass currently logged-in user information to index.html
-        User crntuser = userService.getUser();
-        model.addAttribute("crntuser", crntuser);
+    public String homepg() {
         return "index";
-
     }
 
     @RequestMapping("/admin")
@@ -43,12 +43,14 @@ public class HomeController {
     }
 
     @RequestMapping("/secure")
-    public String secure(Model model) {
-
-        //pass currently logged-in user information to index.html
-        User crntuser = userService.getUser();
-        if (crntuser != null)
-            model.addAttribute("crntuser", crntuser);
+    public String secure(Principal principal, Model model) {
+        String username=principal.getName();
+        model.addAttribute("crntuser", userRepository.findByUsername(username));
         return "secure";
+    }
+
+    @RequestMapping("/index")
+    public String index() {
+        return "index";
     }
 }

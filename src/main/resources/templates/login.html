@@ -14,12 +14,12 @@
         You have been logged out
     </div>
     <p th:text="${message}"></p><br/>
-    <form th:action="@{/login}" method="post" autocomplete="off">
+    <form th:action="@{/login}" method="post" autocomplete="off" id="loginform">
         <div>
-            <label>User Name: <input type="text" name="username"/></label>
+            <label>User Name: <input type="text" name="username" id="inputtext"/></label>
         </div>
         <div>
-            <label>Password: <input type="password" name="password"/></label>
+            <label>Password: <input type="password" name="password" id="inputtext"/></label>
         </div>
         <br/>
         <div>
