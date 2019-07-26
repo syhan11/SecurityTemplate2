@@ -12,11 +12,11 @@ Make sure pom.xml has dependency as below
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head>
-<meta charset="UTF-8">
-<title>SecurePg</title>
+    <div th:insert="basicfrag :: headerFrag"></div>
+    <title>SecurePg</title>
 </head>
 <body>
-
+<div th:insert="basicfrag :: navFrag"></div>
 <!-- hasAuthority has been set in the SecurityConfiguration file -->
 <div sec:authorize="hasAuthority('ADMIN')">
     Administrators will see this text. You can display a navbar here.
@@ -28,11 +28,14 @@ Make sure pom.xml has dependency as below
 
 
 <h3>Secure Page</h3>
-<a href="/logout">Logout</a>
+
 <p th:text="'Current User:' + ${crntuser.username}"></p><br/>
 <h4>email</h4>
 <p th:text="${crntuser.email}"></p><br/>
 <h4>last name</h4>
 <p th:text="${crntuser.lastName}"></p>
+
+
+<div th:insert="basicfrag :: scriptFrag"></div>
 </body>
 </html>

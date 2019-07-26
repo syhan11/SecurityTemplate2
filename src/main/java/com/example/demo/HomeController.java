@@ -23,31 +23,11 @@ public class HomeController {
      */
     @RequestMapping("/")
     public String index(Model model) {
-        boolean adminflag = false;
 
         //pass currently logged-in user information to index.html
         User crntuser = userService.getUser();
-        if (crntuser != null) {
-            model.addAttribute("crntuser", crntuser);
-
-            // check for role of the user to call appropriate page
-            long primid = roleRepository.findByRole("ADMIN").getId();
-            for (Role onerole : crntuser.getRoles()) {
-                if (onerole.getId() == primid) {
-                    adminflag = true;
-                    break;
-                }
-            }
-        }
-        else
-            crntuser = new User();
-
         model.addAttribute("crntuser", crntuser);
-        if (adminflag)
-            return "admin";
-        else
-            return "index";
-
+        return "index";
 
     }
 

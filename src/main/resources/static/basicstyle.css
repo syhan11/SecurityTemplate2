@@ -1,0 +1,58 @@
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid azure;
+    text-align: left;
+    padding: 8px;
+    width: 20%;
+}
+
+tr:nth-child(even) {
+    background-color: azure;
+}
+
+.row {
+    padding: 10px;
+    width: 100%;
+    font-family: arial, sans-serif;
+    padding-left: 20px;
+}
+
+.footer-margin{
+    width:100%;
+    left: 0;
+    bottom: 0;
+    position:fixed;
+    text-align: center;
+}
+
+
+.title-display {
+    text-align: center;
+}
+
+.navbar {
+    position: fixed;
+    left: 0;
+    top: 3px;
+    width: 100%;
+}
+
+#nav-item {
+    width: 100px;
+
+}
+
+#welcomenav {
+    text-align: right;
+    right: 0;
+}
+
+.maintitle {
+    background-color: azure;
+}
+
