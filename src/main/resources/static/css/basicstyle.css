@@ -47,10 +47,10 @@ tr:nth-child(even) {
     width: 100%;
 }
 
-#nav-item {
-    width: 200px;
+/*#nav-item {*/
+    /*width: 200px;*/
 
-}
+/*}*/
 
 #welcomenav {
     text-align: right;
