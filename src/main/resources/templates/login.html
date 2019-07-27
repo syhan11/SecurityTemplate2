@@ -1,30 +1,42 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
+    <div th:insert="basicfrag :: headerFrag"></div>
     <title>Login</title>
 </head>
 <body>
-    <a href="/register">Register...</a>
-    <h1>Login Page</h1>
-    <div th:if="${param.error}">
-        Invalid username or password.
+<div class="bodyhomepage">
+    <div th:insert="basicfrag :: navFrag"></div>
+    <div class="container loginContainer">
+        <div class="container loginContentForm">
+            <h1>Please login</h1>
+            <div th:if="${param.error}">
+                Invalid username or password!
+            </div>
+            <div th:if="${param.logout}">
+                You have been logged out
+            </div>
+            <p th:text="${message}"></p><br/>
+            <form th:action="@{/login}" method="post" autocomplete="off">
+                <div>
+                    <label>User Name: <input type="text" name="username" id="inputtext"/></label>
+                </div>
+                <div>
+                    <label>Password: <input type="password" name="password" id="inputtext"/></label>
+                </div>
+                <br/>
+                <div>
+                    <input type="submit" value="Sign In"/>
+                </div>
+            </form>
+            <br/>
+            <a href="/register">Register...</a>
+
+        </div>
     </div>
-    <div th:if="${param.logout}">
-        You have been logged out
-    </div>
-    <p th:text="${message}"></p><br/>
-    <form th:action="@{/login}" method="post" autocomplete="off" id="loginform">
-        <div>
-            <label>User Name: <input type="text" name="username" id="inputtext"/></label>
-        </div>
-        <div>
-            <label>Password: <input type="password" name="password" id="inputtext"/></label>
-        </div>
-        <br/>
-        <div>
-            <input type="submit" value="Sign In"/>
-        </div>
-    </form>
+</div>
+
+<div th:insert="basicfrag :: scriptFrag"></div>
+
 </body>
 </html>

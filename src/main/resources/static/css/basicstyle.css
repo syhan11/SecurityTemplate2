@@ -7,19 +7,10 @@ table {
 td, th {
     border: 1px solid azure;
     text-align: left;
-    padding: 8px;
-    width: 20%;
-}
+    }
 
 tr:nth-child(even) {
     background-color: azure;
-}
-
-.row {
-    padding: 10px;
-    width: 100%;
-    font-family: arial, sans-serif;
-    padding-left: 20px;
 }
 
 .footer-margin{
@@ -30,36 +21,68 @@ tr:nth-child(even) {
     text-align: center;
 }
 
-
-.title-display {
+.maintitle {
+    background-color: transparent;
     text-align: center;
 }
 
+.bodyhomepage {
+    background: no-repeat center center fixed url("https://backgroundcheckall.com/wp-content/uploads/2018/10/blue-sky-background-images-1.jpg");
+    background-size: cover;
 
-.maintitle {
-    background-color: azure;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
 }
 
-.navbar {
-    position: fixed;
-    left: 0;
-    top: 3px;
+.no-click-button {
+    pointer-events: none;
+    cursor: none;
+}
+
+button:disabled {
+    cursor: not-allowed;
+}
+
+.loginContainer {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
     width: 100%;
+    min-height: 100%;
+    padding: 150px;
 }
 
-/*#nav-item {*/
-    /*width: 200px;*/
+.loginContentForm {
+    box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+    position: relative;
 
-/*}*/
-
-#welcomenav {
-    text-align: right;
-    right: 0;
+    border-radius: 10px 10px 10px 10px;
+    background: #fff;
+    padding: 30px;
+    max-width: 400px;
+    -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+    -webkit-border-radius: 10px 10px 10px 10px;
 }
 
-#loginform {
-    position: center;
-    width: 400px;
-    height: 400px;
+#formFooter {
+    background-color: #f6f6f6;
+    border-top: 1px solid #dce8f1;
+    padding: 25px;
+    text-align: center;
+    -webkit-border-radius: 0 0 10px 10px;
+    border-radius: 0 0 10px 10px;
+}
+
+#inputtext {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
 }
 
