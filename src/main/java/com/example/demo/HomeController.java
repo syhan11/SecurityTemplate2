@@ -38,6 +38,12 @@ public class HomeController {
     @RequestMapping("/")
     public String homepg(Model model) {
         model.addAttribute("allmsg", messageRepository.findAll());
+
+        User crntuser = userService.getUser();
+        if (crntuser != null)
+            model.addAttribute("loginuser", crntuser.getUsername());
+        else
+            model.addAttribute("loginuser", "none");
         return "index";
 
     }
@@ -60,11 +66,7 @@ public class HomeController {
             Calendar cal = Calendar.getInstance();
             Date date = cal.getTime();
             String todaysdate = dateFormat.format(date);
-
             newmsg.setPostedDate(todaysdate);
-
-
-
 
             User currentUser = userService.getUser();
             newmsg.setPostedBy(currentUser.getUsername());

@@ -32,21 +32,20 @@
                     <a th:href="@{/detailmsg/{id}(id=${item.id})}">
                         Detail</a></button> <br/>
 
-                <button type="button" class="glyphicon glyphicon-edit" sec:authorize = "">
+                <!-- Show Updata & Delete buttons for message owner only -->
+                <span th:if="${item.getPostedBy() == loginuser}">
+                    <button type="button" class="glyphicon glyphicon-edit">
                     <a th:href="@{/updatemsg/{id}(id=${item.id})}">
                         Update</a></button><br/>
-                <button type="button" class="glyphicon glyphicon-trash">
+                    <button type="button" class="glyphicon glyphicon-trash">
                     <a th:href="@{/deletemsg/{id}(id=${item.id})}">
                         Delete</a></button><br/>
+                </span>
             </div>
         </td>
     </tr>
 </table>
-
-
 <div th:insert="basicfrag :: footerFrag"></div>
-
-
 </div>
 
 
