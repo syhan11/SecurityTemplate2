@@ -1,8 +1,10 @@
 package com.example.demo;
 
+import org.springframework.lang.NonNull;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.util.Collection;
 
 @Entity
@@ -13,21 +15,31 @@ public class User {
     private long id;
 
     @Column(name="email", nullable=false)
+    @NonNull
+    @Size (min=3, max=30)
     private String email;
 
     @Column(name="password")
+    @NonNull
+    @Size(min=8)
     private String password;
 
     @Column(name="first_name")
+    @NonNull
+    @Size(min=3, max=30)
     private String firstName;
 
     @Column(name="last_name")
+    @NonNull
+    @Size(min=3, max=30)
     private String lastName;
 
     @Column(name="enabled")
     private boolean enabled;
 
     @Column(name="username")
+    @NonNull
+    @Size(min=3, max=30)
     private String username;
 
     @ManyToMany(fetch = FetchType.EAGER)
