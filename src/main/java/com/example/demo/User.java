@@ -48,6 +48,11 @@ public class User {
                inverseJoinColumns = @JoinColumn(name="role_id"))
     private Collection<Role> roles;
 
+//    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+//    public Set<Message> messages;
+
+    @ManyToMany(mappedBy = "users", fetch = FetchType.LAZY)
+    private Collection<Message> messages;
 
     public User() {
     }
@@ -65,6 +70,7 @@ public class User {
         this.setLastName(lastName);
         this.setEnabled(enabled);
         this.setUsername(username);
+        this.setMessages(null);
     }
 
     public long getId() {
@@ -138,7 +144,11 @@ public class User {
         this.roles = roles;
     }
 
+    public Collection<Message> getMessages() {
+        return messages;
+    }
 
-
-
+    public void setMessages(Collection<Message> messages) {
+        this.messages = messages;
+    }
 }

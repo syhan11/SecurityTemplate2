@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="https:www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <div th:insert="basicfrag :: headerFrag"></div>
     <title>InsecurePg</title>
@@ -8,14 +9,44 @@
 <div th:insert="basicfrag :: navFrag"></div>
 
 <div class="jumbotron jumbotron-fluid maintitle">
-    <h1 class="display-4">Title Goes Here!</h1>
+    <h1 class="display-4">All Messages</h1>
 </div>
 <div class="container" id="homepagecontainer">
 
+<table class="msgtable">
+    <tr class="msgtr" style="width: 100%">
+        <th class="msgth">Title</th>
+        <th class="msgth">Content</th>
+        <th class="msgth">Posted Date</th>
+        <th class="msgth">Posted By</th>
+        <th class="msgth">Action</th>
+    </tr>
+    <tr class="msgtr" th:each="item : ${allmsg}">
+        <td class="msgtd" th:text="${item.getTitle()}"></td>
+        <td class="msgtd" th:text="${item.getContent()}"></td>
+        <td class="msgtd" th:text="${item.getPostedDate()}"></td>
+        <td class="msgtd" th:text="${item.getPostedBy()}"></td>
+        <td>
+            <div class="btn-group" role="group" aria-label="...">
+                <button type="button" class="glyphicon glyphicon-search">
+                    <a th:href="@{/detailmsg/{id}(id=${item.id})}">
+                        Detail</a></button> <br/>
 
-<h2>Insecure Page</h2>
+                <button type="button" class="glyphicon glyphicon-edit" sec:authorize = "">
+                    <a th:href="@{/updatemsg/{id}(id=${item.id})}">
+                        Update</a></button><br/>
+                <button type="button" class="glyphicon glyphicon-trash">
+                    <a th:href="@{/deletemsg/{id}(id=${item.id})}">
+                        Delete</a></button><br/>
+            </div>
+        </td>
+    </tr>
+</table>
 
-<a href="/secure">Secure Page</a>
+
+<div th:insert="basicfrag :: footerFrag"></div>
+
+
 </div>
 
 

@@ -1,15 +1,25 @@
-table {
+.msgtable {
     font-family: arial, sans-serif;
+    font-size: larger;
     border-collapse: collapse;
     width: 100%;
+    padding: 15px;
+    background-color: whitesmoke;
 }
 
-td, th {
+.msgth {
+    border: 1px solid azure;
+    text-align: center;
+    height: 25px;
+}
+
+.msgtd {
     border: 1px solid azure;
     text-align: left;
+    padding: 5px;
     }
 
-tr:nth-child(even) {
+.msgtr:nth-child(even) {
     background-color: azure;
 }
 
