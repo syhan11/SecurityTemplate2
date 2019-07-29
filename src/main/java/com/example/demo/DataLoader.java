@@ -18,11 +18,6 @@ public class DataLoader implements CommandLineRunner{
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    @Autowired
-    CourseRepository courseRepository;
-
-    @Autowired
-    SubjectRepository subjectRepository;
 
     @Override
     public void run(String... strings) throws Exception {
@@ -42,75 +37,6 @@ public class DataLoader implements CommandLineRunner{
         user.setRoles(Arrays.asList(adminRole));
         userRepository.save(user);
 
-        Course course = new Course();
-        course.setTitle("AWS I");
-        course.setInstructor("John Smith");
-        course.setDescription("Gain hands on experience with Amazon Web Services(AWS) products and services - Level 1 of 3");
-        course.setCredit(3);
-
-        courseRepository.save(course);
-
-        course = new Course();
-        course.setTitle("AWS 2");
-        course.setInstructor("John Smith");
-        course.setDescription("Gain hands on experience with Amazon Web Services(AWS) products and services - Level 2 of 3");
-        course.setCredit(3);
-        courseRepository.save(course);
-
-        course = new Course();
-        course.setTitle("AWS 3");
-        course.setInstructor("John Smith");
-        course.setDescription("Gain hands on experience with Amazon Web Services(AWS) products and services - Level 3 of 3");
-        course.setCredit(3);
-        courseRepository.save(course);
-
-        course = new Course();
-        course.setTitle("Photoshop");
-        course.setInstructor("Silver Doe");
-        course.setDescription("Learn the basic tools of Adobe Photoshop");
-        course.setCredit(3);
-        courseRepository.save(course);
-
-        course = new Course();
-        course.setTitle("Painting");
-        course.setInstructor("Jane Spring");
-        course.setDescription("Learn the basic tools and techniques of watercolor painting");
-        course.setCredit(3);
-        courseRepository.save(course);
-
-        course = new Course();
-        course.setTitle("Classic Guitar");
-        course.setInstructor("Takoma Park");
-        course.setDescription("Learn fundamental playing techniques of the guitar");
-        course.setCredit(3);
-        courseRepository.save(course);
-
-        course = new Course();
-        course.setTitle("Fiction Writing");
-        course.setInstructor("Rock Ville");
-        course.setDescription("Learn all the elements of great fiction");
-        course.setCredit(3);
-        courseRepository.save(course);
-
-        Subject item = new Subject();
-        item.setName("Computer Science");
-        subjectRepository.save(item);
-
-        item = new Subject();
-        item.setName("Math");
-        subjectRepository.save(item);
-
-        item = new Subject();
-        item.setName("English");
-        subjectRepository.save(item);
-
-        item = new Subject();
-        item.setName("Art");
-        subjectRepository.save(item);
-
-        item = new Subject();
-        item.setName("Business");
-        subjectRepository.save(item);
 
     }
 }

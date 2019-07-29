@@ -48,10 +48,6 @@ public class User {
                inverseJoinColumns = @JoinColumn(name="role_id"))
     private Collection<Role> roles;
 
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(joinColumns = @JoinColumn(name="user_id"),
-            inverseJoinColumns = @JoinColumn(name="course_id"))
-    private Collection<Course> courses;
 
     public User() {
     }
@@ -69,7 +65,6 @@ public class User {
         this.setLastName(lastName);
         this.setEnabled(enabled);
         this.setUsername(username);
-        this.setCourses(null);
     }
 
     public long getId() {
@@ -143,13 +138,6 @@ public class User {
         this.roles = roles;
     }
 
-    public Collection<Course> getCourses() {
-        return courses;
-    }
-
-    public void setCourses(Collection<Course> courses) {
-        this.courses = courses;
-    }
 
 
 
