@@ -63,14 +63,13 @@ public class User {
                 boolean enabled,
                 String username
                 ) {
-        this.email = email;
-        this.password = password;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.enabled = enabled;
-        this.username = username;
-        this.roles = roles;
-        this.courses = null;
+        this.setEmail(email);
+        this.setPassword(password);
+        this.setFirstName(firstName);
+        this.setLastName(lastName);
+        this.setEnabled(enabled);
+        this.setUsername(username);
+        this.setCourses(null);
     }
 
     public long getId() {
