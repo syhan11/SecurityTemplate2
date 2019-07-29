@@ -9,57 +9,83 @@
 </head>
 
 <body>
-<div class="jumbotron">
-    <h1 class="display-4" name="title">New Message</h1>
-    <a href="/" class="btn btn-outline-dark btn-lg">
-        <span class="glyphicon glyphicon-remove"></span>Close</a></div>
+<!--<div class="jumbotron">-->
+<!--<h1 class="display-4" name="title">New Message</h1>-->
+<!--<a href="/" class="btn btn-outline-dark btn-lg">-->
+<!--<span class="glyphicon glyphicon-remove"></span>Close</a></div>-->
 
-<div class="card bg-light mb-3" style="width: 100%">
-    <div class="card-body">
-        <form action="#"
-              th:action="@{/processmsg}"
-              th:object="${newmsg}"
-              method="post">
-            <input type="hidden" th:field="*{id}"/>
-            <div class="row">
-                <div class="col-3">Title:</div>
-                <div class="col-9">
+<!--<div class="card bg-light mb-3" style="width: 100%">-->
+<!--<div class="card-body">-->
+<!--<form action="#"-->
+<!--th:action="@{/processmsg}"-->
+<!--th:object="${newmsg}"-->
+<!--method="post">-->
+<!--<input type="hidden" th:field="*{id}"/>-->
+<!--<div class="row">-->
+<!--<div class="col-3">Title:</div>-->
+<!--<div class="col-9">-->
+<!--<input type="text" th:field="*{title}"/>-->
+<!--<span th:if="${#fields.hasErrors('title')}"-->
+<!--th:errors="*{title}"></span>-->
+<!--</div>-->
+<!--</div>-->
+<!--<div class="row">-->
+<!--<div class="col-3">Content:</div>-->
+<!--<div class="col-9">-->
+<!--<textarea rows="3" th:field="*{content}"/>-->
+<!--<span th:if="${#fields.hasErrors('content')}"-->
+<!--th:errors="*{content}"></span>-->
+<!--</div>-->
+<!--</div>-->
+<!---->
+<!--<br/>-->
+<!--<input type="submit" value="Submit">-->
+<!--</form>-->
+<!--</div>-->
+<!--</div>-->
+
+<!--<div th:insert="basicfrag :: footerFrag"></div>-->
+<!--<div th:insert="basicfrag :: scriptFrag"></div>-->
+
+<div class="bodyhomepage">
+    <div th:insert="basicfrag :: navFrag"></div>
+    <div class="container loginContainer">
+        <div class="container loginContentForm">
+            <h2>New Message</h2>
+            <form action="#"
+                  th:action="@{/processmsg}"
+                  th:object="${newmsg}"
+                  method="post">
+
+                <input type="hidden" th:field="*{id}"/>
+                <div>
+                <label id="titlelabel">Title:
                     <input type="text" th:field="*{title}"/>
                     <span th:if="${#fields.hasErrors('title')}"
-                          th:errors="*{title}"></span>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-3">Content:</div>
-                <div class="col-9">
+                          th:errors="*{title}"></span><br/>
+                </label></div>
+
+                <div>
+                    <label id="textlabel">Content:
                     <textarea rows="3" th:field="*{content}"/>
                     <span th:if="${#fields.hasErrors('content')}"
-                          th:errors="*{content}"></span>
+                          th:errors="*{content}"></span><br/>
+                </label>
                 </div>
-            </div>
-            <!--<div class="row">-->
-                <!--<div class="col-3">Posted Date(mmddyy):</div>-->
-                <!--<div class="col-9">-->
-                    <!--<input type="text" th:field="*{postedDate}"/>-->
-                    <!--<span th:if="${#fields.hasErrors('postedDate')}"-->
-                          <!--th:errors="*{postedDate}"></span>-->
-                <!--</div>-->
-            <!--</div>-->
-            <!--<div class="row">-->
-                <!--<div class="col-3">Posted By:</div>-->
-                <!--<div class="col-9">-->
-                    <!--<input type="hidden" th:field="*{postedBy}"-->
-                    <!--sec:authentication="name" value="@User.Identity.Name"/>-->
-                <!--</div>-->
-            <!--</div>-->
-            <br/>
-            <input type="submit" value="Submit">
-        </form>
+
+
+                <br/>
+                <div style="padding: 10px">
+                <button type="submit" class="btn btn-default">Submit</button>
+                <button type="reset" class="btn btn-default">Reset</button>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 
-<div th:insert="basicfrag :: footerFrag"></div>
 <div th:insert="basicfrag :: scriptFrag"></div>
+
 
 </body>
 </html>

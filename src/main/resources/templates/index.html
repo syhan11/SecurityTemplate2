@@ -27,19 +27,15 @@
         <td class="msgtd" th:text="${item.getPostedDate()}"></td>
         <td class="msgtd" th:text="${item.getPostedBy()}"></td>
         <td>
-            <div class="btn-group" role="group" aria-label="...">
-                <button type="button" class="glyphicon glyphicon-search">
-                    <a th:href="@{/detailmsg/{id}(id=${item.id})}">
-                        Detail</a></button> <br/>
-
+            <button type="button" class="glyphicon glyphicon-search" style="width: 50px">
+                <a th:href="@{/detailmsg/{id}(id=${item.id})}"></a></button> <br/>
+<div>
                 <!-- Show Updata & Delete buttons for message owner only -->
                 <span th:if="${item.getPostedBy() == loginuser}">
-                    <button type="button" class="glyphicon glyphicon-edit">
-                    <a th:href="@{/updatemsg/{id}(id=${item.id})}">
-                        Update</a></button><br/>
-                    <button type="button" class="glyphicon glyphicon-trash">
-                    <a th:href="@{/deletemsg/{id}(id=${item.id})}">
-                        Delete</a></button><br/>
+                    <button type="button" class="glyphicon glyphicon-edit"  style="width: 50px">
+                    <a th:href="@{/updatemsg/{id}(id=${item.id})}"></a></button><br/>
+                    <button type="button" class="glyphicon glyphicon-trash" style="width: 50px">
+                    <a th:href="@{/deletemsg/{id}(id=${item.id})}"></a></button><br/>
                 </span>
             </div>
         </td>

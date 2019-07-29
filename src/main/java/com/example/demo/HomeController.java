@@ -87,7 +87,19 @@ public class HomeController {
     @RequestMapping("/updatemsg/{id}")
     public String updateMsg(@PathVariable("id") long id, Model model){
         model.addAttribute("onemsg", messageRepository.findById(id).get());
-        return "updateMsg";
+        return "updatemsg";
+    }
+
+//    @RequestMapping("/processupdatemsg")
+    @PostMapping("/updateprocess")
+    public String processUpdateMsg(@Valid @ModelAttribute("onemsg") Message onemsg,
+                             BindingResult result, Model model){
+        if (result.hasErrors())
+            return "updatemsg";
+        else {
+            messageRepository.save(onemsg);
+            return "redirect:/";
+        }
     }
 
     @RequestMapping("/deletemsg/{id}")
