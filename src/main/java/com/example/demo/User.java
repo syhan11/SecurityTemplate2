@@ -6,6 +6,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.util.Collection;
+import java.util.Set;
 
 @Entity
 @Table(name="User_Data")
@@ -47,17 +48,29 @@ public class User {
                inverseJoinColumns = @JoinColumn(name="role_id"))
     private Collection<Role> roles;
 
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(joinColumns = @JoinColumn(name="user_id"),
+            inverseJoinColumns = @JoinColumn(name="course_id"))
+    private Collection<Course> courses;
+
     public User() {
     }
 
-    public User(String email, String password, String firstName,
-                String lastName, boolean enabled, String username) {
-        this.setEmail(email);
-        this.setPassword(password);
-        this.setFirstName(firstName);
-        this.setLastName(lastName);
-        this.setEnabled(enabled);
-        this.setUsername(username);
+    public User(String email,
+                String password,
+                String firstName,
+                String lastName,
+                boolean enabled,
+                String username
+                ) {
+        this.email = email;
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.enabled = enabled;
+        this.username = username;
+        this.roles = roles;
+        this.courses = null;
     }
 
     public long getId() {
@@ -119,6 +132,10 @@ public class User {
         this.username = username;
     }
 
+    public boolean isEnabled() {
+        return enabled;
+    }
+
     public Collection<Role> getRoles() {
         return roles;
     }
@@ -126,4 +143,15 @@ public class User {
     public void setRoles(Collection<Role> roles) {
         this.roles = roles;
     }
+
+    public Collection<Course> getCourses() {
+        return courses;
+    }
+
+    public void setCourses(Collection<Course> courses) {
+        this.courses = courses;
+    }
+
+
+
 }

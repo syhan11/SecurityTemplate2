@@ -30,8 +30,8 @@
 
 
                     <button type="button" class="btn btn-default" sec:authorize="hasAuthority('ADMIN')">
-                        <span class="glyphicon glyphicon-edit"></span>
-                        <a th:href="@{/updatecourse/{id}(id=${item.id})}">
+                        <span class="glyphicon glyphicon-plus"></span>
+                        <a th:href="@{/addcourse/{id}(id=${item.id})}">
                             Update</a></button>
 
 

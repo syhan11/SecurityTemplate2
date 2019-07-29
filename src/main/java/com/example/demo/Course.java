@@ -1,6 +1,7 @@
 package com.example.demo;
 
 import javax.persistence.*;
+import java.util.Collection;
 
 @Entity
 public class Course {
@@ -16,6 +17,11 @@ public class Course {
 //    @ManyToOne(fetch = FetchType.EAGER)
 //    @JoinColumn(name = "subject_id")
 //    private Subject subject;
+
+
+    @ManyToMany(mappedBy = "courses", fetch = FetchType.LAZY)
+    private Collection<User> users;
+
 
     public Course() {
     }
@@ -69,4 +75,11 @@ public class Course {
 //    }
 
 
+    public Collection<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(Collection<User> users) {
+        this.users = users;
+    }
 }
