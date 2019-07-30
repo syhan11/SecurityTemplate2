@@ -11,61 +11,31 @@
 <div class="container" id="loginContainer">
     <div class="container loginContentForm">
         <h2>Detail Message</h2>
-        <div th:object="${user}">
 
-                <label>User:</label>
-                <p th:text="*{username}"></p>
-                <label>Email:</label>
-                <p th:text="*{email}"></p>
-
-
-        <button type="button" class="btn btn-default" href="/" th:href="/">Quit</button>
-        </div>
-        <div th:object="${onemsg}">
-
-
-            <div>
-                <label id="titlelabel" th:text="'Title:' + *{title}">
-                    <!--<p th:text="*{title}"></p>-->
-                </label>
-
-                <label id="textlabel">Content:
-                    <p th:text="*{content}"/>
-                </label>
-
-                <label id="datelabel">Posted:
-                    <p th:text="*{postedDate}"/>
-                </label>
-            </div>
-
-
-            <br/>
-
-
-            <div class="btn-group" role="group" aria-label="...">
-                <button type="button" class="btn btn-default" style="padding: 5px">
-                    <span class="glyphicon glyphicon-edit"></span>
-                    <a th:href="@{/updatemsg/{id}(id=${id})}">
-                        Update</a></button>
-
-
-                <button type="button" class="btn btn-default" style="padding: 5px">
-                    <span class="glyphicon glyphicon-trash"></span>
-                    <a th:href="@{/deletemsg/{id}(id=${id})}">
-                        Delete</a></button>
-
-            </div>
-
-
-
+        <div class="titlelabel" th:object="${user}">
+            <label>User:</label>
+            <p th:text="*{username}"></p>
+            <label>Email:</label>
+            <p th:text="*{email}"></p>
         </div>
 
+        <div th:object="${onemsg}" class="textlabel">
+            <label>Title:</label>
+            <p th:text="*{title}"></p>
+            <label>Content:</label>
+            <p style="word-wrap: break-word" th:text="*{content}"></p>
+            <label>Posted Date:</label>
+            <p th:text="*{postedDate}"></p>
+        </div>
+
+        <!--<button class="btn btn-default"></button>-->
+            <a class="btn btn-default" href="/">Close</a><br/>
     </div>
 
-    <div th:insert="basicfrag :: footerFrag"></div>
+
 </div>
 
-
+<div th:insert="basicfrag :: footerFrag"></div>
 <div th:insert="basicfrag :: scriptFrag"></div>
 </body>
 </html>
