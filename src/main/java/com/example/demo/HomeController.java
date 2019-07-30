@@ -97,6 +97,16 @@ public class HomeController {
         if (result.hasErrors())
             return "updatemsg";
         else {
+            DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+            Calendar cal = Calendar.getInstance();
+            Date date = cal.getTime();
+            String todaysdate = dateFormat.format(date);
+            onemsg.setPostedDate(todaysdate);
+
+            User currentUser = userService.getUser();
+            onemsg.setPostedBy(currentUser.getUsername());
+            onemsg.setUsers(Arrays.asList(currentUser));
+
             messageRepository.save(onemsg);
             return "redirect:/";
         }
