@@ -3,10 +3,50 @@
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <div th:insert="basicfrag :: headerFrag"></div>
-    <title>Detail Msg</title>
+    <title>DetailMsg</title>
 </head>
+<body class="bodyhomepage">
+<div th:insert="basicfrag :: navFrag"></div>
 
-<body>
+<div class="container" id="loginContainer">
+    <div class="container loginContentForm">
+        <h2>Detail Message</h2>
+        <div th:object="${user}">
+            <div>
+                <label>User:</label>
+                <p th:text="*{username}"></p>
+            </div>
+        </div>
+        <div th:object="${onemsg}">
+            <input type="hidden" th:field="*{id}"/>
+            <div>
+                <label id="titlelabel">Title:
+                    <input type="text" th:field="*{title}"/>
+                    <span th:if="${#fields.hasErrors('title')}"
+                          th:errors="*{title}"></span><br/>
+                </label></div>
 
+            <div>
+                <label id="textlabel">Content:
+                    <textarea rows="3" th:field="*{content}"/>
+                    <span th:if="${#fields.hasErrors('content')}"
+                          th:errors="*{content}"></span><br/>
+                </label>
+            </div>
+
+
+            <br/>
+            <div style="padding: 10px">
+                <button type="submit" class="btn btn-default">Cancel</button>
+            </div>
+        </div>
+
+    </div>
+
+    <div th:insert="basicfrag :: footerFrag"></div>
+</div>
+
+
+<div th:insert="basicfrag :: scriptFrag"></div>
 </body>
 </html>

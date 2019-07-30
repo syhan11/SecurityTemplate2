@@ -78,11 +78,16 @@ public class HomeController {
     }
 
 
-//    @RequestMapping("/detailmsg/{id}")
-//    public String showMsg(@PathVariable("id") long id, Model model){
-//        model.addAttribute("onemsg", messageRepository.findById(id).get());
-//        return "detailmsg";
-//    }
+    @RequestMapping("/detailmsg/{id}")
+    public String showMsg(@PathVariable("id") long id, Model model){
+        model.addAttribute("onemsg", messageRepository.findById(id).get());
+
+        for (User user : messageRepository.findById(id).get().getUsers())
+            model.addAttribute("user", user);
+
+
+        return "detailmsg";
+    }
 
     @RequestMapping("/updatemsg/{id}")
     public String updateMsg(@PathVariable("id") long id, Model model){
