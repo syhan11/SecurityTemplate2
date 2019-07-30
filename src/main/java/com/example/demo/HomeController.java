@@ -82,9 +82,11 @@ public class HomeController {
     public String showMsg(@PathVariable("id") long id, Model model){
         model.addAttribute("onemsg", messageRepository.findById(id).get());
 
-        for (User user : messageRepository.findById(id).get().getUsers())
+        for (User user : messageRepository.findById(id).get().getUsers()) {
             model.addAttribute("user", user);
-
+            model.addAttribute("allmsg", user.getMessages());
+            break;
+        }
 
         return "detailmsg";
     }

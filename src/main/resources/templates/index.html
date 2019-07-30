@@ -36,7 +36,7 @@
                     <button type="button" class="btn btn-default" style="padding: 5px"
                             th:if="${item.getPostedBy() == loginuser}">
                         <span class="glyphicon glyphicon-edit"></span>
-                        <a th:href="@{/updatemsg/{id}(id=${item.id})}">
+                        <a th:href="@{/updatemsg/{id}(id=${item.id}) }">
                             Update</a></button>
 
 
